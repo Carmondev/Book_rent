@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>BEON BOOKRENT</title>
+    <meta
+      name="description"
+      content="Site demo para aluguel de livros — buscar, filtrar e alugar por semana."
+    />
+    <link rel="stylesheet" href="estilo.css" />
+  </head>
+  <body>
+    <header class="cabecalho">
+      <div class="container">
+        <h1>BEON BOOKRENT</h1>
+        <p class="subtitle">
+          Alugue livros por semana — rápido, prático e seguro
+        </p>
+        <p class="note">Alugue a partir de <strong>500 Meticais</strong></p>
+        <div class="actions">
+          <input id="buscar" placeholder="Buscar título ou autor" />
+          <select id="filtro-genero">
+            <option value="">Todos os gêneros</option>
+          </select>
+          <button id="ver-carrinho">
+            Carrinho (<span id="contagem-carrinho">0</span>)
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main class="container">
+      <section id="books" class="books-section">
+        <header class="section-header">
+          <h2>Livros disponíveis</h2>
+          <p class="lead">
+            Explore nosso catálogo — selecione, busque e alugue por semana.
+          </p>
+        </header>
+
+        <form
+          id="form-adicionar"
+          class="form-adicionar"
+          aria-label="Adicionar livro (demo)"
+        >
+          <div class="form-row">
+            <label class="sr-only" for="titulo">Título</label>
+            <input id="titulo" name="titulo" placeholder="Título" required />
+
+            <label class="sr-only" for="autor">Autor</label>
+            <input id="autor" name="autor" placeholder="Autor" required />
+          </div>
+
+          <div class="form-row">
+            <label class="sr-only" for="genero">Gênero</label>
+            <input id="genero" name="genero" placeholder="Gênero" />
+          </div>
+          <div id="ajuda-preco" class="sr-only">
+            Informe o preço por semana em Meticais (por exemplo 500)
+          </div>
+
+          <div class="form-row">
+            <label class="sr-only" for="imagem">URL da imagem</label>
+            <input
+              id="imagem"
+              name="imagem"
+              placeholder="URL da imagem (opcional)"
+              type="url"
+            />
+          </div>
+
+          <div class="form-row">
+            <label class="sr-only" for="descricao">Descrição</label>
+            <textarea
+              id="descricao"
+              name="descricao"
+              placeholder="Descrição curta"
+              rows="2"
+            ></textarea>
+          </div>
+
+          <div class="form-row">
+            <button type="submit" class="btn-add">
+              Adicionar livro (apenas local)
+            </button>
+          </div>
+        </form>
+
+        <section
+          id="livros-estaticos"
+          class="grade-livros"
+          aria-label="Livros estáticos"
+        >
+          <!-- livros estáticos (mantive os dados originais) -->
+          <article class="livro">
+            <img
+              src="https://covers.openlibrary.org/b/title/O%20Pequeno%20Pr%C3%ADncipe-L.jpg"
+              alt="O Pequeno Príncipe"
+              onerror="this.onerror=null;this.src='https://picsum.photos/600/900?random=11'"
+            />
+            <h3>O Pequeno Príncipe</h3>
+            <div class="meta">Antoine de Saint-Exupéry • Ficção</div>
+            <p class="desc">
+              Um clássico atemporal sobre amizade, amor e imaginação.
+            </p>
+            <div class="price">600 Metical/sem</div>
+            <button data-id="s-1">Alugar</button>
+          </article>
+
+          <article class="livro">
+            <img
+              src="https://covers.openlibrary.org/b/title/Introdu%C3%A7%C3%A3o%20ao%20JavaScript-L.jpg"
+              alt="Introdução ao JavaScript"
+              onerror="this.onerror=null;this.src='https://picsum.photos/600/900?random=12'"
+            />
+            <h3>Introdução ao JavaScript</h3>
+            <div class="meta">C. Developer • Tecnologia</div>
+            <p class="desc">
+              Aprenda JavaScript com exemplos práticos e objetivos.
+            </p>
+            <div class="price">1200 Metical/sem</div>
+            <button data-id="s-2">Alugar</button>
+          </article>
+
+          <article class="livro">
+            <img
+              src="https://covers.openlibrary.org/b/title/O%20Poder%20do%20H%C3%A1bito-L.jpg"
+              alt="O Poder do Hábito"
+              onerror="this.onerror=null;this.src='https://picsum.photos/600/900?random=13'"
+            />
+            <h3>O Poder do Hábito</h3>
+            <div class="meta">Charles Duhigg • Negócios</div>
+            <p class="desc">
+              Entenda como hábitos moldam nossa vida e trabalho.
+            </p>
+            <div class="price">900 Metical/sem</div>
+            <button data-id="s-3">Alugar</button>
+          </article>
+
+          <article class="livro">
+            <img
+              src="https://covers.openlibrary.org/b/title/Cem%20Anos%20de%20Solid%C3%A3o-L.jpg"
+              alt="Cem Anos de Solidão"
+              onerror="this.onerror=null;this.src='https://picsum.photos/600/900?random=14'"
+            />
+            <h3>Cem Anos de Solidão</h3>
+            <div class="meta">Gabriel García Márquez • Ficção</div>
+            <p class="desc">
+              Um romance épico e mágico sobre a família Buendía.
+            </p>
+            <div class="price">1500 Metical/sem</div>
+            <button data-id="s-4">Alugar</button>
+          </article>
+
+          <article class="livro">
+            <img
+              src="https://covers.openlibrary.org/b/title/Design%20de%20Interfaces-L.jpg"
+              alt="Design de Interfaces"
+              onerror="this.onerror=null;this.src='https://picsum.photos/600/900?random=15'"
+            />
+            <h3>Design de Interfaces</h3>
+            <div class="meta">UI Guru • Design</div>
+            <p class="desc">
+              Princípios práticos para projetar interfaces modernas.
+            </p>
+            <div class="price">1000 Metical/sem</div>
+            <button data-id="s-5">Alugar</button>
+          </article>
+
+          <article class="livro">
+            <img
+              src="https://covers.openlibrary.org/b/title/Aprenda%20CSS%20na%20Pr%C3%A1tica-L.jpg"
+              alt="Aprenda CSS na Prática"
+              onerror="this.onerror=null;this.src='https://picsum.photos/600/900?random=16'"
+            />
+            <h3>Aprenda CSS na Prática</h3>
+            <div class="meta">FrontEnd Master • Tecnologia</div>
+            <p class="desc">Guia prático para estilizar sites modernos.</p>
+            <div class="price">800 Metical/sem</div>
+            <button data-id="s-6">Alugar</button>
+          </article>
+
+          <article class="livro">
+            <img
+              src="https://covers.openlibrary.org/b/title/A%20Arte%20da%20Guerra-L.jpg"
+              alt="A Arte da Guerra"
+              onerror="this.onerror=null;this.src='https://picsum.photos/600/900?random=17'"
+            />
+            <h3>A Arte da Guerra</h3>
+            <div class="meta">Sun Tzu • Estratégia</div>
+            <p class="desc">
+              Lições sobre estratégia aplicáveis além do campo de batalha.
+            </p>
+            <div class="price">600 Metical/sem</div>
+            <button data-id="s-7">Alugar</button>
+          </article>
+
+          <article class="livro">
+            <img
+              src="https://covers.openlibrary.org/b/title/Clean%20Code-L.jpg"
+              alt="Clean Code"
+              onerror="this.onerror=null;this.src='https://picsum.photos/600/900?random=18'"
+            />
+            <h3>Clean Code</h3>
+            <div class="meta">Robert C. Martin • Tecnologia</div>
+            <p class="desc">
+              Boas práticas para escrever código limpo e manutenível.
+            </p>
+            <div class="price">1400 Metical/sem</div>
+            <button data-id="s-8">Alugar</button>
+          </article>
+
+          <article class="livro">
+            <img
+              src="https://covers.openlibrary.org/b/title/Mindset-L.jpg"
+              alt="Mindset"
+              onerror="this.onerror=null;this.src='https://picsum.photos/600/900?random=19'"
+            />
+            <h3>Mindset</h3>
+            <div class="meta">Carol S. Dweck • Psicologia</div>
+            <p class="desc">
+              Como a mentalidade de crescimento influencia o sucesso.
+            </p>
+            <div class="price">700 Metical/sem</div>
+            <button data-id="s-9">Alugar</button>
+          </article>
+
+          <article class="livro">
+            <img
+              src="https://covers.openlibrary.org/b/title/Sapiens-L.jpg"
+              alt="Sapiens"
+              onerror="this.onerror=null;this.src='https://picsum.photos/600/900?random=20'"
+            />
+            <h3>Sapiens</h3>
+            <div class="meta">Yuval Noah Harari • História</div>
+            <p class="desc">Uma breve história da humanidade.</p>
+            <div class="price">2000 Metical/sem</div>
+            <button data-id="s-10">Alugar</button>
+          </article>
+
+          <article class="livro">
+            <img
+              src="https://covers.openlibrary.org/b/title/O%20Homem%20mais%20Rico%20da%20Babil%C3%B4nia-L.jpg"
+              alt="O Homem mais Rico da Babilônia"
+              onerror="this.onerror=null;this.src='https://picsum.photos/600/900?random=21'"
+            />
+            <h3>O Homem mais Rico da Babilônia</h3>
+            <div class="meta">George S. Clason • Finanças</div>
+            <p class="desc">Fábulas com lições práticas sobre dinheiro.</p>
+            <div class="price">650 Metical/sem</div>
+            <button data-id="s-11">Alugar</button>
+          </article>
+
+          <article class="livro">
+            <img
+              src="https://covers.openlibrary.org/b/title/Fotografia%20Digital%20B%C3%A1sica-L.jpg"
+              alt="Fotografia Digital Básica"
+              onerror="this.onerror=null;this.src='https://picsum.photos/600/900?random=22'"
+            />
+            <h3>Fotografia Digital Básica</h3>
+            <div class="meta">Lens Pro • Arte</div>
+            <p class="desc">
+              Fundamentos para tirar fotos melhores com qualquer câmera.
+            </p>
+            <div class="price">700 Metical/sem</div>
+            <button data-id="s-12">Alugar</button>
+          </article>
+        </section>
+
+        <section id="lista-livros" class="grade-livros" aria-live="polite">
+          <noscript>
+            <p>
+              Para ver a lista de livros, ative o JavaScript no seu navegador.
+            </p>
+          </noscript>
+        </section>
+      </section>
+    </main>
+
+    <div id="modal-carrinho" class="modal" aria-hidden="true">
+      <div class="modal-content">
+        <h2>Seu carrinho</h2>
+        <div id="itens-carrinho"></div>
+        <div class="modal-actions">
+          <button id="finalizar">Finalizar (simular)</button>
+          <button id="fechar-carrinho">Fechar</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="modal-aluguel" class="modal" aria-hidden="true">
+      <div class="modal-content">
+        <h2>Alugar livro</h2>
+        <form id="form-aluguel">
+          <input type="hidden" name="id_livro" id="id-livro" />
+          <input type="hidden" name="titulo_livro" id="titulo-livro" />
+          <div class="form-row">
+            <label for="nome-locatario">Nome</label>
+            <input id="nome-locatario" name="nome-locatario" required />
+          </div>
+          <div class="form-row">
+            <label for="contato-locatario">Contato (telefone ou email)</label>
+            <input id="contato-locatario" name="contato-locatario" required />
+          </div>
+          <div class="form-row">
+            <label for="data-inicio">Data de início</label>
+            <input id="data-inicio" name="data-inicio" type="date" required />
+          </div>
+          <div class="form-row">
+            <label for="semanas">Semanas</label>
+            <input
+              id="semanas"
+              name="semanas"
+              type="number"
+              min="1"
+              value="1"
+              required
+            />
+          </div>
+          <div class="form-row">
+            <button type="submit" class="btn-primary">Confirmar aluguel</button>
+            <button type="button" id="cancelar-aluguel">Cancelar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <footer class="rodape">
+      <p>BEON BOOKRENT</p>
+    </footer>
+
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJ+Y3Qm4q6Yk2a6bU5Q5c5q5Y5jv8a8mXw7RA="
+      crossorigin="anonymous"
+    ></script>
+    <script src="script.js"></script>
+    <script src="jquery-animacoes.js"></script>
+  </body>
+</html>

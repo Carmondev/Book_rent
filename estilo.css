@@ -1,0 +1,355 @@
+:root {
+  --bg: #f7fafc;
+  --card: #ffffff;
+  --accent: #0b5f3a;
+  --muted: #6b7280;
+  --overlay-opacity: 0.45;
+  /* brand colors for personalized styling */
+  --brand-1: #0b5f3a; /* deep green */
+  --brand-2: #98b84e; /* light green */
+  --header-radius: 10px;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family: Inter, Arial, sans-serif;
+  margin: 0;
+  background: var(--bg);
+  color: #111;
+}
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+.cabecalho {
+  background-image: linear-gradient(
+      rgba(0, 0, 0, var(--overlay-opacity)),
+      rgba(0, 0, 0, var(--overlay-opacity))
+    ),
+    url("transferir (1).jfif");
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  padding: 28px 0;
+  margin-bottom: 18px;
+}
+.cabecalho h1 {
+  margin: 0;
+  font-size: 36px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: #fff;
+  text-shadow: 0 6px 20px rgba(0, 0, 0, 0.55);
+}
+.cabecalho .subtitle {
+  margin: 6px 0 12px;
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 15px;
+  font-style: italic;
+  opacity: 0.95;
+}
+.cabecalho .note {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.95);
+  font-weight: 700;
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.09);
+  padding: 6px 12px;
+  border-radius: 999px;
+  margin-top: 8px;
+}
+
+/* small 'logo' square before the title to personalise */
+.cabecalho h1::before {
+  content: "";
+  width: 44px;
+  height: 44px;
+  background: linear-gradient(135deg, var(--brand-1), var(--brand-2));
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(11, 95, 58, 0.28);
+  flex-shrink: 0;
+}
+.actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.actions input {
+  flex: 1;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 0;
+}
+.actions select {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 0;
+}
+.actions button {
+  background: linear-gradient(90deg, var(--brand-1), var(--brand-2));
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(11, 95, 58, 0.18);
+}
+.grade-livros {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+}
+.livro {
+  background: var(--card);
+  padding: 12px;
+  border-radius: 8px;
+  box-shadow: 0 8px 18px rgba(10, 20, 10, 0.06);
+  display: flex;
+  flex-direction: column;
+}
+.livro img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+.livro h3 {
+  font-size: 16px;
+  margin: 8px 0 4px;
+}
+.meta {
+  font-size: 13px;
+  color: var(--muted);
+}
+.desc {
+  flex: 1;
+  font-size: 14px;
+  margin: 8px 0;
+  color: #333;
+}
+.livro .price {
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.livro button {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.form-adicionar {
+  background: var(--card);
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 18px;
+  box-shadow: 0 6px 14px rgba(10, 20, 10, 0.04);
+}
+.form-adicionar .form-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.form-adicionar input,
+.form-adicionar textarea {
+  flex: 1;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid #e6edf0;
+}
+.form-adicionar textarea {
+  resize: vertical;
+}
+.form-adicionar .btn-add {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.sr-only {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap;
+}
+.rodape {
+  padding: 36px 0;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.95);
+  background-image: linear-gradient(
+      rgba(0, 0, 0, var(--overlay-opacity)),
+      rgba(0, 0, 0, var(--overlay-opacity))
+    ),
+    url("transferir (1).jfif");
+  background-size: cover, cover;
+  background-position: center, center;
+  background-repeat: no-repeat;
+  /* Improve typography for readability */
+  text-decoration: none;
+  text-transform: none;
+  font-size: 14px;
+  line-height: 1.6;
+  letter-spacing: 0.02em;
+  font-weight: 600;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+}
+
+.rodape p {
+  margin: 0;
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
+
+.rodape p::before {
+  content: "";
+  width: 28px;
+  height: 28px;
+  background: linear-gradient(135deg, var(--brand-1), var(--brand-2));
+  border-radius: 6px;
+  box-shadow: 0 6px 14px rgba(11, 95, 58, 0.18);
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.4);
+}
+.modal[aria-hidden="false"] {
+  display: flex;
+}
+.modal-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  min-width: 320px;
+  max-width: 720px;
+}
+.modal-content h2 {
+  margin-top: 0;
+  margin-bottom: 8px;
+  font-size: 20px;
+  color: var(--accent);
+}
+.modal-content form {
+  display: block;
+}
+.modal-content .form-row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 12px;
+  align-items: center;
+}
+.modal-content .form-row label {
+  width: 120px;
+  font-size: 14px;
+  color: var(--muted);
+}
+.modal-content .form-row input,
+.modal-content .form-row textarea,
+.modal-content .form-row select {
+  flex: 1;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #e6edf0;
+  background: #fbfdff;
+  font-size: 14px;
+}
+.modal-content .form-row input:focus,
+.modal-content .form-row textarea:focus,
+.modal-content .form-row select:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(11, 95, 58, 0.08);
+  border-color: var(--accent);
+}
+.modal-content .form-row textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.btn-primary:hover {
+  filter: brightness(1.03);
+}
+.btn-secondary {
+  background: #f3f4f6;
+  color: #111;
+  border: none;
+  padding: 10px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btn-ripple {
+  pointer-events: none;
+  display: block;
+}
+.modal-content .form-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  margin-top: 6px;
+}
+
+.livro-overlay {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.75);
+  color: #fff;
+  padding: 12px;
+  border-radius: 6px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: left;
+  overflow: auto;
+  font-size: 14px;
+}
+.livro-overlay .overlay-text {
+  line-height: 1.4;
+}
+.modal-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  margin-top: 12px;
+}
+
+@media (max-width: 600px) {
+  .actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .livro img {
+    height: 180px;
+  }
+  .form-adicionar .form-row {
+    flex-direction: column;
+  }
+  .modal-content .form-row {
+    flex-direction: column;
+  }
+  .modal-content .form-row label {
+    width: 100%;
+  }
+}
